@@ -3,42 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Loteria Card Shuffle</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #FFFDE4;
-      color: #383838;
-      margin: 0;
-      padding: 20px;
-    }
-    #logo {
-      margin-top: 10px;
-      width: 200px;
-    }
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background: #FFFDE4;
+    color: #383838;
+    margin: 0;
+    padding: 20px;
+  }
+  #logo {
+    margin-top: 10px;
+    width: 200px;
+  }
+  #card {
+    display: block;
+    margin: 20px auto;
+    width: 90vw;       /* Fill most of phone screen width */
+    height: auto;      /* Keep aspect ratio */
+    max-height: 80vh;  /* Prevent from overflowing vertically */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #64AAFB;
+    color: white;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background: #4a91e2;
+  }
+
+  /* 📱 On larger screens (desktop), limit card size */
+  @media (min-width: 768px) {
     #card {
-      margin: 20px auto;
-      max-width: 90vw;
+      width: 400px;   /* fixed width on desktop */
       max-height: 70vh;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
-    button {
-      margin: 10px;
-      padding: 12px 24px;
-      font-size: 20px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #64AAFB;
-      color: white;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #4a91e2;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
@@ -99,5 +109,6 @@
   </script>
 </body>
 </html>
+
 
 
