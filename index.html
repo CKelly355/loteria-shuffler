@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <title>Card Shuffle App</title>
+  <title>Loteria Card Shuffle</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
       background: #FFFDE4;
-      color: #fff;
+      color: #383838;
+      margin: 0;
+      padding: 20px;
+    }
+    #logo {
+      margin-top: 10px;
+      width: 200px;
     }
     #card {
       margin: 20px auto;
@@ -18,7 +25,7 @@
     }
     button {
       margin: 10px;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 20px;
       font-weight: bold;
       border: none;
@@ -29,27 +36,31 @@
       transition: background 0.3s;
     }
     button:hover {
-      background: #64AAFB;
+      background: #4a91e2;
     }
   </style>
 </head>
 <body>
-  
-  <img src="cards/AE_logo_600x334.png" width="200" height="auto" alt=""/>
-  <h1 style="color: #383838; font-size: 36px; font-family: sans-serif; letter-spacing: -1px;">Loteria Card Shuffle</h1>
+
+  <!-- Optional logo (remove if not needed) -->
+  <img id="logo" src="cards/AE_logo_600x334.png" alt="Logo">
+
+  <h1>Loteria Card Shuffle</h1>
+
   <div>
     <button onclick="shuffleDeck()">Shuffle Deck</button>
     <button onclick="nextCard()">Next Card</button>
   </div>
+
   <div>
     <img id="card" src="" alt="Your card will appear here">
   </div>
 
-<script>
-    // 🃏 Generate deck automatically (cards/card1.jpg ... card52.jpg)
+  <script>
+    // 🃏 Generate deck automatically (cards/card1.png ... cards/card52.png)
     let deck = [];
     for (let i = 1; i <= 52; i++) {
-      deck.push(`cards/card${i}.jpg`);
+      deck.push(`cards/card${i}.png`);
     }
 
     let shuffledDeck = [];
@@ -62,8 +73,7 @@
         [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
       }
       currentIndex = 0;
-      document.getElementById("card").src = "";
-      alert("Deck shuffled!");
+      updateCardImage();
     }
 
     function nextCard() {
@@ -72,12 +82,20 @@
         return;
       }
       if (currentIndex < shuffledDeck.length) {
-        document.getElementById("card").src = shuffledDeck[currentIndex];
+        updateCardImage();
         currentIndex++;
       } else {
         alert("No more cards! Shuffle again.");
       }
     }
+
+    function updateCardImage() {
+      const img = document.getElementById('card');
+      img.src = shuffledDeck[currentIndex];
+    }
+
+    // Shuffle automatically on page load
+    shuffleDeck();
   </script>
 </body>
 </html>
