@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Card Shuffle App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #FFFDE4;
+      color: #fff;
+    }
+    #card {
+      margin: 20px auto;
+      max-width: 90vw;
+      max-height: 70vh;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #64AAFB;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #64AAFB;
+    }
+  </style>
+</head>
+<body>
+  
+  <img src="cards/AE_logo_600x334.png" width="200" height="auto" alt=""/>
+  <h1 style="color: #383838; font-size: 36px; font-family: sans-serif; letter-spacing: -1px;">Loteria Card Shuffle</h1>
+  <div>
+    <button onclick="shuffleDeck()">Shuffle Deck</button>
+    <button onclick="nextCard()">Next Card</button>
+  </div>
+  <div>
+    <img id="card" src="" alt="Your card will appear here">
+  </div>
+
+<script>
+    // 🃏 Generate deck automatically (cards/card1.jpg ... card52.jpg)
+    let deck = [];
+    for (let i = 1; i <= 52; i++) {
+      deck.push(`cards/card${i}.jpg`);
+    }
+
+    let shuffledDeck = [];
+    let currentIndex = 0;
+
+    function shuffleDeck() {
+      shuffledDeck = [...deck];
+      for (let i = shuffledDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
+      }
+      currentIndex = 0;
+      document.getElementById("card").src = "";
+      alert("Deck shuffled!");
+    }
+
+    function nextCard() {
+      if (shuffledDeck.length === 0) {
+        alert("Please shuffle the deck first!");
+        return;
+      }
+      if (currentIndex < shuffledDeck.length) {
+        document.getElementById("card").src = shuffledDeck[currentIndex];
+        currentIndex++;
+      } else {
+        alert("No more cards! Shuffle again.");
+      }
+    }
+  </script>
+</body>
+</html>
