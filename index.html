@@ -4,52 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loteria Card Shuffle</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #FFFDE4;
-      color: #383838;
-      margin: 0;
-      padding: 20px;
-    }
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background: #FFFDE4;
+    color: #383838;
+    margin: 0;
+    padding: 10px;
+  }
+
+  #logo {
+    margin: 5px auto;
+    width: 120px; /* smaller by default */
+  }
+
+  h1 {
+    font-size: 20px;  /* smaller by default */
+    margin: 10px 0;
+  }
+
+  #card {
+    display: block;
+    margin: 10px auto;
+    width: 90vw;
+    height: auto;
+    max-height: 75vh;  /* leave space for logo + buttons */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+
+  button {
+    margin: 6px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #64AAFB;
+    color: white;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #4a91e2;
+  }
+
+  /* 💻 On larger screens, bump sizes back up */
+  @media (min-width: 768px) {
     #logo {
-      margin-top: 10px;
       width: 200px;
     }
+    h1 {
+      font-size: 32px;
+    }
     #card {
-      display: block;
-      margin: 20px auto;
-      width: 90vw;       /* Fill most of phone screen width */
-      height: auto;      /* Keep aspect ratio */
-      max-height: 90vh;  /* Prevent from overflowing vertically */
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      width: 400px;
+      max-height: 70vh;
     }
     button {
-      margin: 10px;
       padding: 12px 24px;
       font-size: 20px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #64AAFB;
-      color: white;
-      transition: background 0.3s;
     }
-    button:hover {
-      background: #4a91e2;
-    }
-
-    /* 📱 On larger screens (desktop), limit card size */
-    @media (min-width: 768px) {
-      #card {
-        width: 400px;   /* fixed width on desktop */
-        max-height: 70vh;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
@@ -110,3 +129,4 @@
   </script>
 </body>
 </html>
+
